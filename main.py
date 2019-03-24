@@ -1,6 +1,8 @@
 from GameField import GameField
 from Computer import Computer
 from Player import Player
+from termcolor import colored
+
 
 if __name__ == '__main__':
     field = GameField()
@@ -11,12 +13,15 @@ if __name__ == '__main__':
     while playing:
         playing = computer.make_a_move()
         if not playing:
-            print('Computer lose.')
+            print(colored('You won! Computer lose', 'yellow'))
+            break
 
-        player.make_a_move()
+        field.print_current_field()
 
-        for i in field.current_field:
-            print(i)
+        playing = player.make_a_move()
+        if not playing:
+            print(colored('You lose', 'red'))
+            break
 
-    print('Player lose')
+
 

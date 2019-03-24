@@ -10,11 +10,12 @@ class Computer(Player):
         if not len(self.field.possible_moves):
             return False
 
-        move = random.randrange(0, len(self.field.possible_moves))
+        move_num = random.randrange(0, len(self.field.possible_moves))
+        move = self.field.possible_moves[move_num]
         self.field.update_field(
-            self.field.possible_moves[move][0],
-            self.field.possible_moves[move][1],
-            self.field.possible_moves[move][2]
+            move[0],
+            move[1],
+            move[2]
         )
 
         return True
